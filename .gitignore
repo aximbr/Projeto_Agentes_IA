@@ -1,0 +1,20 @@
+# Segredos
+.env
+
+# Memória e logs de execução (mantém apenas as pastas)
+# memory/*
+# !memory/.gitkeep
+# logs/*
+# !logs/.gitkeep
+
+# Área de trabalho do agente (arquivos gerados por ele)
+# workspace/*
+# !workspace/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
