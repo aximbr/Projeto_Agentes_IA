@@ -30,13 +30,15 @@ from langchain_core.prompts import ChatPromptTemplate
 load_dotenv(".env")
 
 pergunta = "Qual a diferença entre transporte aéreo e marítimo?"
+prompt_1 = "Você é um especialista em logística"
+prompt_2 = "Você é um especialista em Tecnologia"
 
 # criar o modelo
 llm = ChatOpenAI(api_key=os.environ.get("OPENAI_API_KEY"), model= "gpt-4.1" ) #model="gpt-5.5")
 
 # criar o prompt
 prompt = ChatPromptTemplate.from_messages([
-    ("system", "Você é um especialista em logística. Responda de forma clara e direta."),
+    ("system", "{area}. Responda de forma clara e direta."),
     ("human", "Responda a pergunta abaixo: \nPergunta: {topico}")
 ])
 
@@ -45,21 +47,30 @@ chain = prompt | llm
 
 # exibir o resultado
 
-def faz_pergunta(chain, pergunta):
+def criar_prompt(chain, area, pergunta):
     
     resposta = chain.invoke({
+        "area" : area,
         "topico": pergunta
-    })
-
-    print("Provider: OpenAI")
-    print("Modelo: gpt-4.1")
+    }) 
     print("Pergunta:")
     print(pergunta)
     print("Resposta:")
     print(resposta.content)
 
-faz_pergunta(chain, pergunta)
+#Exibe as respostas
+print("Provider: OpenAI")
+print("Modelo: gpt-4.1")
+print()
+criar_prompt(chain, prompt_1, pergunta)
 
 pergunta = input("Entre com a sua pergunta:")
 
-faz_pergunta(chain, pergunta)
+# Utilizando o primeiro prompt
+print(f"Prompt utilizado: {prompt_1}")
+criar_prompt(chain, prompt_1, pergunta)
+
+# Utilizando o segundo prompt
+print()
+print(f"Prompt utilizado: {prompt_2}")
+criar_prompt(chain, prompt_2, pergunta)
