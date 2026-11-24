@@ -2,15 +2,17 @@
 # Author: Jose P. Leitao e co-pilot
 # Data: 2026-11-23
 # Nome: Desafio 01
-# 
-# O objetivo é entender exatamente o que acontece quando um programa Python conversa com uma LLM.
-# Ao final deste desafio você deverá ser capaz de:
-# Ler uma chave de API a partir de um arquivo .env
-# Conectar a uma LLM
-# Enviar um prompt
-# Receber uma resposta
-# Exibir a resposta no terminal
-# Este desafio servirá como base para todos os demais módulos da plataforma.
+#
+"""
+O objetivo é entender exatamente o que acontece quando um programa Python conversa com uma LLM.
+Ao final deste desafio você deverá ser capaz de:
+- Ler uma chave de API a partir de um arquivo .env
+- Conectar a uma LLM
+- Enviar um prompt
+- Receber uma resposta
+- Exibir a resposta no terminal
+Este desafio servirá como base para todos os demais módulos da plataforma.
+"""
 
 # Imports
 import os
@@ -27,7 +29,7 @@ client = OpenAI(
 )
 # Envia as instruções para a LLM e o prompt
 response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-4.1",
     instructions="Você é um agente prestativo",
     input="Qual a capital do Brasil?",
 )
