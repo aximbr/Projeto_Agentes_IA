@@ -34,7 +34,7 @@ prompt_1 = "Você é um especialista em logística"
 prompt_2 = "Você é um especialista em Tecnologia"
 
 # criar o modelo
-llm = ChatOpenAI(api_key=os.environ.get("OPENAI_API_KEY"), model= "gpt-4.1" ) #model="gpt-5.5")
+llm = ChatOpenAI(api_key=os.environ.get("OPENAI_API_KEY"), model= "gpt-4.1" )
 
 # criar o prompt
 prompt = ChatPromptTemplate.from_messages([
