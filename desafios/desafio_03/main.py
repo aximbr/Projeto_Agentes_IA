@@ -17,13 +17,17 @@ Ao final deste desafio você deverá ser capaz de:
 - Compreender a base conceitual para agentes futuros
 """
 
+# ---------------------------------------------------------------
 # Imports
+# ---------------------------------------------------------------
 import os
 from dotenv import load_dotenv
 from langchain.chat_models import init_chat_model
 from langchain_core.prompts import ChatPromptTemplate
 
-# Carregar o ambiente
+# ---------------------------------------------------------------
+# Ler as variaveis de ambiente
+# ---------------------------------------------------------------
 load_dotenv(".env")
 
 # ---------------------------------------------------------------

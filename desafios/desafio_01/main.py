@@ -13,21 +13,28 @@ Ao final deste desafio você deverá ser capaz de:
 - Exibir a resposta no terminal
 Este desafio servirá como base para todos os demais módulos da plataforma.
 """
-
+###########################################
 # Imports
+###########################################
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
 
+###########################################
 # Ler as variaveis de ambiente
+###########################################
 load_dotenv(".env")
 
+###########################################
 # Cria o cliente da OpenAI
+###########################################
 client = OpenAI(
     # This is the default and can be omitted
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
+###########################################
 # Envia as instruções para a LLM e o prompt
+###########################################
 response = client.responses.create(
     model="gpt-4.1",
     instructions="Você é um agente prestativo",

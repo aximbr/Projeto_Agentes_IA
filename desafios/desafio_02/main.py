@@ -20,33 +20,44 @@ Ao final deste desafio você deverá ser capaz de:
 - Criar uma aplicação mais estruturada do que a do Desafio 01
 """
 
+###########################################
 # Imports
+###########################################
 import os
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 
-# Carregar o ambiente
+###########################################
+# Ler as variaveis de ambiente
+###########################################
 load_dotenv(".env")
 
 pergunta = "Qual a diferença entre transporte aéreo e marítimo?"
 prompt_1 = "Você é um especialista em logística"
 prompt_2 = "Você é um especialista em Tecnologia"
 
-# criar o modelo
+###########################################
+# Cria o cliente da OpenAI
+###########################################
 llm = ChatOpenAI(api_key=os.environ.get("OPENAI_API_KEY"), model= "gpt-4.1" )
 
-# criar o prompt
+###########################################
+# Cria o prompt
+###########################################
 prompt = ChatPromptTemplate.from_messages([
     ("system", "{area}. Responda de forma clara e direta."),
     ("human", "Responda a pergunta abaixo: \nPergunta: {topico}")
 ])
 
+###########################################
 # executar a chain
+###########################################
 chain = prompt | llm
 
+###########################################
 # exibir o resultado
-
+###########################################
 def criar_prompt(chain, area, pergunta):
     
     resposta = chain.invoke({
@@ -58,7 +69,9 @@ def criar_prompt(chain, area, pergunta):
     print("Resposta:")
     print(resposta.content)
 
+###########################################
 #Exibe as respostas
+###########################################
 print("Provider: OpenAI")
 print("Modelo: gpt-4.1")
 print()
@@ -66,11 +79,15 @@ criar_prompt(chain, prompt_1, pergunta)
 
 pergunta = input("Entre com a sua pergunta:")
 
+###########################################
 # Utilizando o primeiro prompt
+###########################################
 print(f"Prompt utilizado: {prompt_1}")
 criar_prompt(chain, prompt_1, pergunta)
 
+###########################################
 # Utilizando o segundo prompt
+###########################################
 print()
 print(f"Prompt utilizado: {prompt_2}")
 criar_prompt(chain, prompt_2, pergunta)
